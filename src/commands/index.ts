@@ -1,11 +1,11 @@
 import * as ping from "./ping";
 import * as repeat from "./repeat";
-import * as joinChannel from "./joinChannel";
-import * as exitChannel from "./exitChannel";
+import * as joinvocal from "./joinVocal";
+import * as exitvocal from "./exitVocal";
 
 export const commands = {
   ping,
   repeat,
-  joinChannel,
-  exitChannel,
+  joinvocal,
+  exitvocal,
 };

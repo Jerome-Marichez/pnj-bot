@@ -1,9 +1,9 @@
 import { CommandInteraction, SlashCommandBuilder } from "discord.js";
-import { joinVoiceChannel, VoiceConnectionStatus, getVoiceConnection } from '@discordjs/voice';
+import { getVoiceConnection } from "@discordjs/voice";
 
 export const data = new SlashCommandBuilder()
-  .setName("exitChannel")
-  .setDescription("Bot leaves the voice channel it's connected to.");
+  .setName("exitvocal")
+  .setDescription("Bot leaves the voice channel");
 
 export async function execute(interaction: CommandInteraction) {
   if (!interaction.guild) {

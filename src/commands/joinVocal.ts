@@ -2,11 +2,11 @@ import { CommandInteraction, SlashCommandBuilder } from "discord.js";
 import { joinVoiceChannel } from "@discordjs/voice";
 
 export const data = new SlashCommandBuilder()
-  .setName("joinChannel")
-  .setDescription("Bot joins the voice channel you're in.");
+  .setName("joinvocal")
+  .setDescription("Bot joins the voice channel");
 
 export async function execute(interaction: CommandInteraction) {
-  if (!interaction.member || !('voice' in interaction.member) || !interaction.member.voice.channel) {
+  if (!interaction.member || !("voice" in interaction.member) || !interaction.member.voice.channel) {
     return interaction.reply("You must be in a voice channel to use this command.");
   }
   
