@@ -10,13 +10,8 @@ export const data = new SlashCommandBuilder()
       .setRequired(true));
 
 export async function execute(interaction: CommandInteraction): Promise<InteractionCallbackResponse | InteractionResponse | undefined> {
-
+  const { reply } = interaction;
   const message = interaction.isCommand() ? interaction.options.getString("message") : "";
-
-  if (message) {
-    return interaction.reply(message);
-  } else {
-    return interaction.reply("You must provide a message to repeat.");
-  }
-
+  
+  return reply(message ? message : "You must provide a message to repeat.");
 }

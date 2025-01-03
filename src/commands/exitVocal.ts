@@ -6,17 +6,16 @@ export const data = new SlashCommandBuilder()
   .setDescription("Bot leaves the voice channel");
 
 export async function execute(interaction: CommandInteraction) {
-  if (!interaction.guild) {
-    return interaction.reply("This command can only be used in a server.");
-  }
+  const { reply, guild } = interaction; 
   
-  const connection = getVoiceConnection(interaction.guild.id);
+  if (!guild) return reply("This command can only be used in a server.");
+  
+  const connection = getVoiceConnection(guild.id);
+  if (!connection) return reply("I'm not connected to any voice channel.");
+  
 
-  if (!connection) {
-    return interaction.reply("I'm not connected to any voice channel.");
-  }
-
-  connection.disconnect();
-
-  return interaction.reply("Disconnected from the voice channel.");
+  connection.destroy();
+  const checkConnection = getVoiceConnection(guild.id);
+  
+  return checkConnection ? reply("Disconnected from the voice channel.") : reply("Failed to disconnect from the voice channel.");
 }
